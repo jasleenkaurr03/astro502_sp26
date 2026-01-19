@@ -1,0 +1,69 @@
+# WASP 136 SPECTRUM 
+
+import os
+from astropy.io import fits # use astropy to open fits file to read ESO archive data
+import matplotlib.pyplot as plt
+import numpy as np
+
+# open fits file
+wasp136 = fits.open('ADP.2020-06-10T14_26_50.822.fits')
+
+# instrument info and unit info
+header = wasp136[1].header
+header
+
+# extract columns from fits file
+data = wasp136[1].data
+print(data.columns)
+# WAVE = wavelengths, FLUX = flux changing
+
+# make plot of flux vs. wavelength 
+# index first of the columns because if just doing data['WAVE'] it creates array in array
+xvals = data['WAVE'][0] # wavelength
+yvals = data['FLUX'][0] # flux
+
+plt.plot(xvals, yvals)
+plt.xlabel('Wavelength (Å)')
+plt.ylabel('Flux') 
+plt.title('Full Spectrum of Flux vs. Wavelength of Wasp136') 
+plt.show()
+
+# make 4 subplots to show each line
+# Lithium: 6708 Å
+# H-alpha: 6563 Å
+# Ca II H & K: 3933 Å & 3968 Å
+
+# create 2x2 array of graphs and space out/enlarge by changing figsize
+figures, graphs = plt.subplots(2, 2, figsize=(10, 8))
+
+# overall figure title
+plt.suptitle('\nNormalized Continuum Around Key Spectral Features for Wasp136', fontsize=16)
+plt.subplots_adjust(hspace=0.3)
+
+# H-alpha (hydrogen) line at 6563 Angstrom 
+graphs[0,0].plot(xvals, yvals, 'tab:pink')
+graphs[0,0].set_xlim(6500, 6600) 
+graphs[0,0].set_title(r'H-alpha Peak at 6563 $\AA$')
+graphs[0,0].axvline(x=6563, color='black', ls='--')
+
+# lithium line at 6707.76 Angstrom
+graphs[0,1].plot(xvals, yvals, 'grey')
+graphs[0,1].set_xlim(6700, 6715)
+graphs[0,1].set_title(r'Lithium Peak at 6707.76 $\AA$')
+graphs[0,1].axvline(x=6707.76, color='black', ls='--')
+
+# Ca II H line at 3933 Angstrom
+# doesn't show anything for WASP 136 because data in spectrum doesn't go this far
+graphs[1,0].plot(xvals, yvals, 'orange')
+graphs[1,0].set_xlim(3900, 3960)
+graphs[1,0].set_title(r'Ca II H line at 3933 $\AA$')
+graphs[1,0].axvline(x=3933, color='black', ls='--')
+
+# Ca II K line at 3968 Angstom
+# doesn't show anything for WASP 136 because data in spectrum doesn't go this far
+graphs[1,1].plot(xvals, yvals, 'tab:red')
+graphs[1,1].set_xlim(3960, 4000)
+graphs[1,1].set_title(r'Ca II K line at 3968 $\AA$')
+graphs[1,1].axvline(x=3968, color='black', ls='--')
+
+plt.show()
