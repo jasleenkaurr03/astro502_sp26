@@ -1,0 +1,37 @@
+# astroquery to import all the ESO data
+from astroquery.eso import Eso
+from astropy.io import fits
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+# test astroquery by trying to retrieve file from targets
+eso = Eso()
+query = 'WASP-96' # find from target list (on Dr. Mann repo)
+results = eso.query_surveys(target=query, survey='HARPS')
+print(np.array(results))
+
+download = eso.retrieve_data(results[0][0])
+print(download)
+
+# decompress .fz to .fits
+#funpack /Users/jasleenkaur/.astropy/cache/astroquery/Eso/ADP.2014-12-22T14/54/14.160.fits.fz
+
+path = '/Users/jasleenkaur/.astropy/cache/astroquery/Eso/ADP.2014-12-22T14:54:14.160.fits.fz'
+print(os.path.exists(path))
+
+# try plotting hip data - from Jan13 code
+wasp96 = fits.open('/Users/jasleenkaur/.astropy/cache/astroquery/Eso/ADP.2014-12-22T14:54:14.160.fits.fz')
+
+data = hats34[1].data
+print(data.columns)
+
+# try plotting hip data - from Jan13 code
+xvals = data['WAVE'][0] # wavelength
+yvals = data['FLUX'][0] # flux
+plt.plot(xvals, yvals)
+plt.xlabel('Wavelength (Å)')
+plt.ylabel('Flux') 
+plt.title('Full Spectrum of Flux vs. Wavelength of Hip 65') 
+plt.show()
+# ERROR - name 'data' is not defined
