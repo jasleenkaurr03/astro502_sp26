@@ -117,7 +117,6 @@ graphs[0,1].axvline(x=6707.76, color='black', ls='--')
 
 
 # Ca II H line at 3933 Angstrom
-# doesn't show anything for WASP 136 because data in spectrum doesn't go this far
 graphs[1,0].plot(xvals, yvals, 'orange')
 graphs[1,0].set_xlim(3900, 3960)
 
@@ -137,7 +136,6 @@ graphs[1,0].axvline(x=3933, color='black', ls='--')
 
 
 # Ca II K line at 3968 Angstom
-# doesn't show anything for WASP 136 because data in spectrum doesn't go this far
 graphs[1,1].plot(xvals, yvals, 'tab:red')
 graphs[1,1].set_xlim(3960, 4000)
 
