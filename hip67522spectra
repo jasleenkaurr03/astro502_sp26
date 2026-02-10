@@ -46,7 +46,7 @@ hdul.info()
 
 hip67522 = fits.open('/Users/jasleenkaur/.astropy/cache/astroquery/Eso/ADP.2025-02-21T08:21:54.067.fits')
 
-# code from wasp136test on GitHub - just changed 
+# code from wasp136test on GitHub - just changed to hip67522 in naming
 data = hip67522[1].data
 print(data.columns)
 # WAVE = wavelengths, FLUX = flux changing
@@ -62,6 +62,7 @@ plt.ylabel('Flux')
 plt.title('Full Spectrum of Flux vs. Wavelength of HIP 67522') 
 plt.autoscale(enable=True, axis='both', tight=True)
 
+plt.savefig('HIP 67522 Full Spectrum') # name of graph
 plt.show()
 
 # === OUTPUT NOTES BELOW: NO USEFUL SPECTRA OBTAINED ===
