@@ -67,7 +67,7 @@ xmax = xvals[-1]
 plt.plot(xvals, yvals, color='tab:pink')
 plt.xlabel('Wavelength (Å)')
 plt.ylabel('Flux') 
-plt.title(f'Full Spectrum: {star}, Instrument: {instrument}, Wavelengths from {xmin:.2f} to {xmax:.2f} Å') 
+plt.title(f'Full Spectrum: {star}, Instrument: {instrument}\nWavelengths from {xmin:.2f} to {xmax:.2f} Å') 
 plt.autoscale(enable=True, axis='both', tight=True)
 
 # save figure
