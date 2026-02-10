@@ -61,6 +61,7 @@ plt.ylabel('Flux')
 plt.title('Full Spectrum of Flux vs. Wavelength of Wasp136') 
 plt.autoscale(enable=True, axis='both', tight=True)
 
+plt.savefig('WASP-136 Full Spectrum')
 plt.show()
 
 # make 4 subplots to show each line
@@ -153,4 +154,5 @@ graphs[1,1].set_ylim(ymin4 - pad4, ymax4 + pad4)
 graphs[1,1].set_title(r'Ca II K line at 3968 $\AA$')
 graphs[1,1].axvline(x=3968, color='black', ls='--')
 
+plt.savefig('WASP-136 Spectral Features') # added on 2-10
 plt.show()
