@@ -87,7 +87,7 @@ figures, graphs = plt.subplots(2, 2, figsize=(10, 8))
 
 
 # overall figure title
-plt.suptitle(f'\nNormalized Continuum Around Key Spectral Features for {star}', fontsize=16)
+plt.suptitle(f'\nContinuum Around Key Spectral Features for {star}', fontsize=16)
 plt.subplots_adjust(hspace=0.3)
 
 
@@ -112,7 +112,7 @@ graphs[0,0].axvline(x=6562.801, color='black', ls='--') # fixed from 6563 Å to 
 
 
 # lithium line at 6707.76 Angstrom
-graphs[0,1].plot(xvals, yvals, 'grey')
+graphs[0,1].plot(xvals, yvals, 'tab:purple')
 graphs[0,1].set_xlim(6700, 6715)
 
 mask2 = (xvals >= 6700) & (xvals <= 6715)
@@ -130,7 +130,7 @@ graphs[0,1].axvline(x=6707.76, color='black', ls='--')
 
 
 # Ca II H line at 3933 Angstrom
-graphs[1,0].plot(xvals, yvals, 'orange')
+graphs[1,0].plot(xvals, yvals, '#71C7A0')
 graphs[1,0].set_xlim(3900, 3960)
 
 mask3 = (xvals >= 3900) & (xvals <= 3960)
@@ -149,7 +149,7 @@ graphs[1,0].axvline(x=3933, color='black', ls='--')
 
 
 # Ca II K line at 3968 Angstom
-graphs[1,1].plot(xvals, yvals, 'tab:red')
+graphs[1,1].plot(xvals, yvals, '#4B9CD3')
 graphs[1,1].set_xlim(3960, 4000)
 
 mask4 = (xvals >= 3960) & (xvals <= 4000)
