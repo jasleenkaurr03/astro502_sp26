@@ -409,5 +409,4 @@ df = pd.read_csv(csv_url)
 
 df_query = df.loc[df['hostname'] == query]
 t_eff = df_query['tic_teff'].item()
-print(t_eff)
-
+print('T_eff = ', t_eff)
